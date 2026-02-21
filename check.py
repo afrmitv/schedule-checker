@@ -28,7 +28,7 @@ def main():
     if new_data != old_data:
         added = set(new_data.splitlines()) - set(old_data.splitlines())
         if added:
-            send_notification(f"出勤時間が追加されました:\n{added}")
+            send_notification(f"KYKの出勤時間が追加されました:\n{added}")
 
         with open("last.txt", "w") as f:
             f.write(new_data)
