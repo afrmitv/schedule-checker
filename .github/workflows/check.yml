@@ -1,0 +1,21 @@
+name: Schedule Check
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run script
+        run: python check.py
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
